@@ -103,3 +103,30 @@ function buildMetadata(sample) {
 
         // Plotly.newPlot("bar", data, layout);
 
+    // Create a bubble chart that displays each sample
+    var trace1 = {
+        x: otuID,
+        y: sampleValue,
+        mode: 'markers',
+        marker: {
+            size: sampleValue,
+            color: otuID
+        }
+    }
+
+    var data1 = [trace1];
+
+    layout1 = {
+        title: 'Total OTU Values',
+        xaxis: 'OTU ID',
+        yaxis: 'Sample Values'
+    }
+
+    Plotly.newPlot("bubble", data1, layout1)
+
+        // data.names.forEach((name) => {
+        //     dropDown.append('option').text(name).property("value", name);
+                
+        //     var example = data.names[0];
+
+        //     metaData(example);
