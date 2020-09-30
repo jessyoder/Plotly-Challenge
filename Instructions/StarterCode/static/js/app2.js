@@ -35,12 +35,12 @@ function buildPlot(sample) {
         var samples = data.samples;
         var metaFilter = samples.filter(obj => obj.id == sample);
         var result = metaFilter[0];
-        // console.log(sample);
 
         var otuIds = result.otu_ids;
         var otu_labels = result.otu_labels;
         var sampleValues = result.sample_values;
-        // console.log(sampleValues);
+
+        // Create a bubble chart that displays each sample
         var bubbleLayout = {
             title: "Bacteria Cultures Per Sample",
             margin: { t: 0 },
@@ -48,8 +48,9 @@ function buildPlot(sample) {
             xaxis: { title: "OTU ID" },
             margin: { t: 30 }
         };
+
         var bubbleData = [
-            {
+            {    
                 x: otuIds,
                 y: sampleValues,
                 text: otu_labels,
@@ -66,6 +67,7 @@ function buildPlot(sample) {
 
         var yticks = otuIds.slice(0, 10).map(otuIds => `OTU ${otuIds}`).reverse();
 
+        // Create a horizontal bar chart to display the top 10 OTUs found in that individual
         var barData = [
             {
                 y: yticks,
@@ -76,8 +78,6 @@ function buildPlot(sample) {
             }
         ];
 
-        // Create a horizontal bar chart to display 
-        // the top 10 OTUs found in that individual
         var barLayout = {
             title: "OTU IDs",
             margin: { t: 30, l: 150 }
@@ -88,8 +88,7 @@ function buildPlot(sample) {
 }
 
 
-// Create a function to update all of the plots any time 
-// a new sample is selected
+// Create a function to update all of the plots any time a new sample is selected
 function init() {
 
     var selector = d3.select("#selDataset");
