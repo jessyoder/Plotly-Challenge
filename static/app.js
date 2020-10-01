@@ -1,6 +1,6 @@
 function buildMetadata(sample) {
     // Use the D3 library to read in `samples.json`
-    d3.json("samples.json").then((data) => {
+    d3.json("../samples.json").then((data) => {
 
         // Collect metadata information from samples.json
         var metadata = data.metadata;
@@ -28,7 +28,7 @@ function buildMetadata(sample) {
 function buildPlot(sample) {
 
     // Use the D3 library to read in `samples.json`
-    d3.json("samples.json").then((data) => {
+    d3.json("../samples.json").then((data) => {
         // console.log(data);
 
         // Get metadata and filter by id
